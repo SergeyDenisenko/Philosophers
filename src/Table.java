@@ -1,3 +1,6 @@
+/**
+ * Класс стол
+ */
 public class Table {
 
     private Fork[] forks;
@@ -16,12 +19,18 @@ public class Table {
         start();
     }
 
+    /**
+     * Раскладывает вилки на стол
+     */
     private void spreadOutTheForks() {
         for (int i=0; i<NUMBER_PLACES; i++) {
             forks[i] = new Fork();
         }
     }
 
+    /**
+     * Рассаживает философов за стол
+     */
     private void toPlantPhilosophers() {
         for (int i=0; i<NUMBER_PLACES; i++) {
             int number = i + 1;
@@ -29,12 +38,23 @@ public class Table {
         }
     }
 
+    /**
+     * Философы начинают работать
+     */
     private void start() {
         for (int i=0; i<NUMBER_PLACES; i++) {
             philosophers[i].start();
         }
     }
 
+    /**
+     * Философ берет освободившиеся вилки
+     * согласно своему месту за столом
+     * @param philosopher Философ
+     * @param forkLeft Левая вилка
+     * @param forkRight Правая вилка
+     * @return Статус успеха попытки поесть
+     */
     public synchronized boolean giveAwayTheForks(Philosopher philosopher,int forkLeft, int forkRight) {
         if (!forks[forkLeft].isBusy() && !forks[forkRight].isBusy()) {
             philosopher.eat(forks[forkLeft], forks[forkRight]);

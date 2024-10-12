@@ -4,6 +4,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
+        // Начинаем работу
         new Table(NUMBER_PHILOSOPHERS, NUMBER_MEALS);
 
     }
