@@ -1,5 +1,5 @@
 public class Fork {
-    private boolean status;
+    private boolean status = false;
 
     public boolean isBusy() {
         return status;

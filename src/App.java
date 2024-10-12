@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class App {
     private static final int NUMBER_PHILOSOPHERS = 5;
     private static final int NUMBER_MEALS = 3;

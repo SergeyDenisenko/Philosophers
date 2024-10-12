@@ -25,7 +25,7 @@ public class Table {
     private void toPlantPhilosophers() {
         for (int i=0; i<NUMBER_PLACES; i++) {
             int number = i + 1;
-            philosophers[i] = new Philosopher("Философ " + number, forks[i], forks[number % NUMBER_PLACES], NUMBER_MEALS);
+            philosophers[i] = new Philosopher("Философ " + number, i, (number % NUMBER_PLACES), NUMBER_MEALS, this);
         }
     }
 
@@ -33,5 +33,13 @@ public class Table {
         for (int i=0; i<NUMBER_PLACES; i++) {
             philosophers[i].start();
         }
+    }
+
+    public synchronized boolean giveAwayTheForks(Philosopher philosopher,int forkLeft, int forkRight) {
+        if (!forks[forkLeft].isBusy() && !forks[forkRight].isBusy()) {
+            philosopher.eat(forks[forkLeft], forks[forkRight]);
+            return true;
+        }
+        return false;
     }
 }
