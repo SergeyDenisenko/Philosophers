@@ -6,19 +6,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        ArrayList<Fork> table = new ArrayList<>();
-        for (int i=0; i<NUMBER_PHILOSOPHERS; i++) {
-            table.add(new Fork());
-        }
+        new Table(NUMBER_PHILOSOPHERS, NUMBER_MEALS);
 
-        ArrayList<Philosopher> philosophers = new ArrayList<>();
-        for (int i=0; i<NUMBER_PHILOSOPHERS; i++) {
-            int number = i + 1;
-            philosophers.add(new Philosopher("Философ " + number, table.get(i), table.get(number % NUMBER_PHILOSOPHERS), NUMBER_MEALS));
-        }
-
-        for (int i=0; i<NUMBER_PHILOSOPHERS; i++) {
-            philosophers.get(i).start();
-        }
     }
 }
